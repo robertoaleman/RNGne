@@ -1,5 +1,10 @@
-<h2>RNGneProcessor: True Randomness from Natural Entropy</h2>
-<h3>Introduction </h3>
+<h2>RNGneProcessor:</h2>
+<h2> Random Number Generator from Natural Entropy </h2>
+ * Encapsulates the logic for extracting random bits from an image and calculating Shannon Entropy,<br/>
+ * and uses a cryptographic extractor to ensure a highly strong and secure seed obtained from the entropy of natural phenomena.<br/>
+ * Author: Roberto Aleman<br/>
+ * Documentation: https://ventics.com/rngneprocessor/<br/> 
+<h3>Introduction:True Randomness from Natural Entropy </h3>
 The <b><code>RNGneProcessor</code></b> class embodies the core concept that <b>physical, chaotic phenomena are the ideal source for generating True Random Numbers (TRNGs)</b>. While algorithmic generators (PRNGs) are fast, they are mathematically predictable. True security, especially in cryptography, requires <b>unpredictability</b> drawn from the physical world.
 
 The <b>RNGne</b> project implements a robust two-phase approach to leverage this natural chaos for secure applications:
