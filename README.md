@@ -10,7 +10,7 @@ The <b><code>RNGneProcessor</code></b> class embodies the core concept that <b>p
 The <b>RNGne</b> project implements a robust two-phase approach to leverage this natural chaos for secure applications:
 <ol start="1">
  	<li><b>Extraction Phase (TRNG):</b> Uses an image of a chaotic natural scene (like waves or lightning) to capture the random thermal noise of the camera sensor.</li>
- 	<li><b>Amplification Phase (CSPRNG Seed):</b> Converts the extracted raw entropy into a tiny, high-quality <b>Cryptographic Master Seed</b> via a cryptographic hash. This seed can then be mathematically amplified into an infinite stream of secure random numbers using a CSPRNG.</li>
+ 	<li><b>Amplification Phase (CSPRNG Seed):</b> Converts the extracted raw entropy into a tiny, high-quality <b>Cryptographic Master Seed</b> via a cryptographic hash. This seed can then be mathematically amplified into a theoretically infinite stream of secure random numbers using a CSPRNG.</li>
 </ol>
 <h2>RNGneProcessor PHP Class, Documentation</h2>
 <h3>Core Operations and Methodology</h3>
