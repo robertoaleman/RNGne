@@ -100,9 +100,9 @@ This guide will walk you through setting up and validating the <b>RNGne (Random 
 </ol>
 <h3>Your Folder Structure Should Look Like This:</h3>
 <pre><code class="code-container formatted ng-tns-c3543900489-207 no-decoration-radius" role="text" data-test-id="code-content">/rngne
-??? RNGneProcessor.php
-??? upload_and_process.php
-??? /uploads (Empty folder, must be writable)</code></pre>
+|- RNGneProcessor.php
+|- upload_and_process.php
+|- /uploads (Empty folder, must be writable)</code></pre>
 <h2>Step 2: Acquire a Test Image</h2>
 To perform validation tests, you'll need two types of images:
 <ol start="1">
