@@ -1,6 +1,6 @@
 <?php
 /**
- * Class RNGneProcessor
+ * Class RNGneProcessor ( Random Number Generator from Natural Entropy )
  * Encapsulates the logic for extracting random bits from an image and calculating Shannon Entropy,
  * and uses a cryptographic extractor to ensure a highly strong and secure seed obtained from the entropy of natural phenomena.
  * Author: Roberto Aleman
@@ -149,4 +149,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['entropy_file'])) {
         <?php endif; ?>
     </div>
 </body>
+
 </html>
