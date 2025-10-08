@@ -133,4 +133,4 @@ To perform validation tests, you'll need two types of images:
 <img  src="https://ventics.com/wp-content/uploads/2025/10/ventics.com_RNGne-2.jpg" alt="" width="818" height="626" /> 
 If both tests pass, your <b>RNGne</b> system is correctly installed and functioning, and it is accurately converting the physical chaos of the image into a high-quality <b>Cryptographic Master Seed</b>. 
 
-Disclaimer. This software is provided as is, you are responsible for using it.
+Disclaimer. This software is provided as is. You are responsible for testing it at your own risk.
