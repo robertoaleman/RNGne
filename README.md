@@ -12,7 +12,7 @@ The <b>RNGne</b> project implements a robust two-phase approach to leverage this
  	<li><b>Extraction Phase (TRNG):</b> Uses an image of a chaotic natural scene (like waves or lightning) to capture the random thermal noise of the camera sensor.</li>
  	<li><b>Amplification Phase (CSPRNG Seed):</b> Converts the extracted raw entropy into a tiny, high-quality <b>Cryptographic Master Seed</b> via a cryptographic hash. This seed can then be mathematically amplified into a theoretically infinite stream of secure random numbers using a CSPRNG.</li>
 </ol>
-<h2>RNGneProcessor PHP Class, Documentation</h2>
+<h2>RNGne Processor PHP Class, Documentation</h2>
 <h3>Core Operations and Methodology</h3>
 The system operates by extracting the most volatile and noisy part of the image data: the <b>Least Significant Bit (LSB)</b>.
 <h4>1. Entropy Extraction (LSB Method)</h4>
