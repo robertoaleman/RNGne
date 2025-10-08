@@ -4,7 +4,7 @@
  * and uses a cryptographic extractor to ensure a highly strong and secure seed obtained from the entropy of natural phenomena.<br/>
  * Author: Roberto Aleman<br/>
  * Documentation: <br>
- v1 : https://ventics.com/rngneprocessor/
+ v1: https://ventics.com/rngneprocessor/
  <br/> 
  v2: https://ventics.com/rngne-processor-v2-0/ <br/> 
 <h3>Introduction:True Randomness from Natural Entropy </h3>
