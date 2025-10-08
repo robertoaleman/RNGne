@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['entropy_file'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RNGne - Natural Entropy Generator</title>
+    <title>RNGneProcessor:Random Number Generator from Natural Entropy</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; }
         .container { max-width: 800px; margin: auto; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['entropy_file'])) {
 </head>
 <body>
     <div class="container">
-        <h1>RNGne - Natural Entropy Extractor  </h1><p>  Author: Roberto Aleman<br>
+        <h1>RNGne - Natural Entropy Extractor - Random Number Generator from Natural Entropy </h1><p>  Author: Roberto Aleman<br>
     <a href="https://ventics.com/rngneprocessor/">Documentation</a></p>
 
 
@@ -151,3 +151,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['entropy_file'])) {
 </body>
 
 </html>
+
