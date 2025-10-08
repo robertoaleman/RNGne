@@ -181,7 +181,7 @@ He RNGneProcessor v2.0 not only extracts randomness from nature, but uses the mo
 
 <h3>What the Class Does (The Process)</h3>
 &nbsp;
-
+<img class="alignnone size-full wp-image-14362" src="https://ventics.com/wp-content/uploads/2025/10/ventics.com_v2.jpg" alt="" width="826" height="673" />
 The <code>RNGneProcessor</code> class executes a three-stage pipeline to generate a master cryptographic seed:
 <ol start="1">
  	<li><b>Entropy Harvester (Physical Input):</b> The <code>processImageForRandomBits()</code> method extracts the <b>Least Significant Bit (LSB)</b> from the grayscale value of every pixel. This LSB acts as a collector of tiny, unpredictable physical noise (atmospheric disturbance, sensor noise) present in the image, yielding a long string of raw, <i>physical</i> random bits.</li>
