@@ -1,4 +1,4 @@
-<h2>RNGneProcessor:</h2>
+<h2>RNGne Processor:</h2>
 <h2> Random Number Generator from Natural Entropy </h2>
  * Encapsulates the logic for extracting random bits from an image and calculating Shannon Entropy,<br/>
  * and uses a cryptographic extractor to ensure a highly strong and secure seed obtained from the entropy of natural phenomena.<br/>
