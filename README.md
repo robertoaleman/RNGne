@@ -3,7 +3,10 @@
  * Encapsulates the logic for extracting random bits from an image and calculating Shannon Entropy,<br/>
  * and uses a cryptographic extractor to ensure a highly strong and secure seed obtained from the entropy of natural phenomena.<br/>
  * Author: Roberto Aleman<br/>
- * Documentation: https://ventics.com/rngneprocessor/<br/> 
+ * Documentation: <br>
+ v1 : https://ventics.com/rngneprocessor/
+ <br/> 
+ v2: https://ventics.com/rngne-processor-v2-0/ <br/> 
 <h3>Introduction:True Randomness from Natural Entropy </h3>
 The <b><code>RNGneProcessor</code></b> class embodies the core concept that <b>physical, chaotic phenomena are the ideal source for generating True Random Numbers (TRNGs)</b>. While algorithmic generators (PRNGs) are fast, they are mathematically predictable. True security, especially in cryptography, requires <b>unpredictability</b> drawn from the physical world.
 
@@ -133,4 +136,74 @@ To perform validation tests, you'll need two types of images:
 <img  src="https://ventics.com/wp-content/uploads/2025/10/ventics.com_RNGne-2.jpg" alt="" width="818" height="626" /> 
 If both tests pass, your <b>RNGne</b> system is correctly installed and functioning, and it is accurately converting the physical chaos of the image into a high-quality <b>Cryptographic Master Seed</b>. 
 
+-----------------
+
+<h2>RNGne Processor v2.0: From Nature to Solid Cryptographic Seed</h2>
+
+Introduction: Raising the Quality of Natural Entropy
+The class RNGneProcessorhas evolved to version 2.0, consolidating its position as a robust tool for generating random seeds from natural phenomena (images). The core objective remains to extract the physical randomness inherent in image noise (vortices, waves, chaotic patterns) and purify it into a Cryptographic Master Seed using SHA-256.
+
+The crucial improvement in this release is the integration of Rényi Entropies , enabling a security audit that goes beyond basic statistical analysis.
+
+The Methodology: TRNG with Crypto Extractor
+The workflow RNGneProcessorcombines the physics of noise with the mathematics of safety:
+
+Raw Entropy Harvesting ( Harvester ): The function processImageForRandomBits()extracts the Least Significant Bit (LSB) from each pixel, collecting the weakest and most chaotic noise source from the image.
+Quality Audit (Entropy): The quality of the extracted raw bits is measured using three different metrics, with emphasis on the “worst case.”
+Purity Extraction (Cryptographic Extraction): The function extractMasterSeed()uses SHA-256 to compress and remove any remaining bias in the raw entropy, ensuring a final 256-bit seed of complete purity.
+
+# The New Frontier: Rényi's Entropy for Security
+
+While Shannon entropy ( H1 ) is excellent for measuring overall imbalance (i.e., whether there are more zeros than ones), cryptography requires a more stringent measure. This is where Rényi entropies come in, measured in 8-bit (1-byte) blocks for standard security analysis:
+
+# Collision Entropy ( Hmin or α=2 )
+What it measures: Block uniformity . It focuses on how far the distribution of the 256 possible bytes is from being perfectly flat. A value close to 8.0000 (for an 8-bit block) is ideal.
+
+Significance: Helps confirm that the LSB extraction process is not favoring certain byte patterns beyond single-bit bias.
+
+# Minimum Entropy ( Hmin or H∞ )
+What it measures: Worst-case security . This is the most important metric. It's calculated from the probability of the most frequent block in the entire bit sequence.
+
+# Hmin = −log2  ( Probability of the Most Frequent Block )
+
+Importance: Hmin is the actual security value of the raw source. If the result is 7.8271 (as in real-life examples), it means the source is not perfectly random, fully justifying the use of the Crypto Extractor . Without this analysis, we would not know the risk level of the raw material.
+
+# Conclusion: The Necessary Cryptography
+
+Comparing the results (ej., H1​ ≈1.0000 vs. Hmin ≈7.8271) is the acid test:
+
+H1​ perfect(1.0) suggests a large statistical source.
+Hmin imperfect(e.g., 7.8271) reveals atiny deviationinherent in the physical process.
+
+This small deviation is what the SHA-256 Extractor deterministically corrects . By hashing, the residual predictability (the missing 0.1729 bits) is removed and the final Master Seed is guaranteed to be a full 256 bits pure , ideal for initializing any Cryptographically Secure Pseudo-Random Number Generator (CSPRNG).
+
+He RNGneProcessor v2.0 not only extracts randomness from nature, but uses the most rigorous tools of cryptography to certify and purify that randomness, making it suitable for the most demanding security environments.
+
+<h3>What the Class Does (The Process)</h3>
+&nbsp;
+
+The <code>RNGneProcessor</code> class executes a three-stage pipeline to generate a master cryptographic seed:
+<ol start="1">
+ 	<li><b>Entropy Harvester (Physical Input):</b> The <code>processImageForRandomBits()</code> method extracts the <b>Least Significant Bit (LSB)</b> from the grayscale value of every pixel. This LSB acts as a collector of tiny, unpredictable physical noise (atmospheric disturbance, sensor noise) present in the image, yielding a long string of raw, <i>physical</i> random bits.</li>
+ 	<li><b>Comparative Cryptographic Audit (Rényi Analysis):</b> The class calculates three critical entropy measures on the raw bit string (analyzed in 8-bit blocks):
+<ul>
+ 	<li><b>Shannon Entropy (<span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathnormal">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"><span class=""><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span>):</b> Measures the <b>average uncertainty</b> (basic <span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">0</span></span></span></span></span> vs. <span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">1</span></span></span></span></span> balance).</li>
+ 	<li><b>Collision Entropy (<span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathnormal">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"><span class=""><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span>):</b> Measures the <b>uniformity of the blocks</b> (how flat the distribution of all 256 possible bytes is).</li>
+ 	<li><b>Min-Entropy (<span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathnormal">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"><span class=""><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight">min</span></span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span> or <span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathnormal">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"><span class=""><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span>):</b> Measures the <b>worst-case security</b>. This identifies the probability of the <i>single most likely block</i> appearing, providing the true, minimum amount of randomness (in bits) available in the raw data.</li>
+</ul>
+</li>
+ 	<li><b>Cryptographic Extractor:</b> The <code>extractMasterSeed()</code> method uses the <b>SHA-256</b> cryptographic hash function to process the raw bits. This step is essential because it eliminates any remaining statistical bias detected by the <span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathnormal">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"><span class=""><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight">min</span></span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span> test.</li>
+</ol>
+&nbsp;
+<h3>What is Achieved with Version 2.0</h3>
+&nbsp;
+
+The key achievement of V2.0 is the transition from a mere random bit generator to a <b>certified cryptographic seed producer</b> by explicitly addressing worst-case scenarios.
+<ol start="1">
+ 	<li><b>Quantified Security Level:</b> The most important achievement is obtaining the <span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathbf">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"><span class=""><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight">min</span></span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span> value. This metric tells you exactly, in bits, how much true randomness is in your raw source (e.g., <span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">7.8271</span></span></span></span></span> bits/block). This is the <b>cryptographic standard</b> for assessing the quality of a random source, which Shannon Entropy (<span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathnormal">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"><span class=""><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span>) cannot provide.</li>
+ 	<li><b>Justification of the Extractor:</b> By showing that the raw entropy is typically high but slightly less than ideal (e.g., <span class="math-inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathnormal">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"><span class=""><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight">min</span></span></span></span></span><span class="vlist-s">​</span></span></span></span></span><span class="mrel">&lt;</span></span><span class="base"><span class="mord">8.0000</span></span></span></span></span>), the analysis <b>cryptographically justifies</b> the need for the SHA-256 extractor. The hash function acts as a high-quality <b>"purifier"</b> that guarantees the final 256-bit seed is free of <i>all</i> detectable bias, making it suitable for initializing a <b>CSPRNG (Cryptographically Secure Pseudo-Random Number Generator)</b>.</li>
+ 	<li><b>Academic and Speculative Value:</b> The comparative analysis facilitates deeper study (as we discussed), allowing users to quantify the <b>"complexity"</b> or <b>"chaotic existence"</b> of different natural phenomena. It provides a rigorous, universal metric to compare the randomness inherent in different physical sources.</li>
+</ol>
+
+------------------
 Disclaimer. This software is provided as is. You are responsible for testing it at your own risk.
